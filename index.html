@@ -228,6 +228,24 @@
       text-decoration:none;
     }
     .news-link span:last-child { color:#ff6870; font-weight:900; }
+    .posts { list-style:none; margin:20px 0 0; padding:0; display:grid; gap:12px; }
+    .post {
+      display:flex; gap:16px; align-items:flex-start;
+      background:#fff; border:1px solid var(--line); border-radius:16px;
+      padding:16px 18px; text-decoration:none; color:inherit;
+      transition:.2s ease;
+    }
+    .post:hover { box-shadow:0 10px 26px rgba(16,18,22,.08); transform:translateY(-1px); }
+    .post__thumb { width:96px; height:72px; border-radius:10px; object-fit:cover; flex-shrink:0; background:#eee; }
+    .post__body { display:flex; flex-direction:column; gap:4px; min-width:0; }
+    .post__date { font-size:.8rem; color:var(--muted); font-weight:700; }
+    .post__title { font-weight:800; font-size:1.02rem; }
+    .post__excerpt { font-size:.9rem; color:#565d66; }
+    .empty { color:var(--muted); margin:20px 0 0; }
+    @media (max-width:520px) {
+      .post { flex-direction:column; }
+      .post__thumb { width:100%; height:160px; }
+    }
     .join {
       background:linear-gradient(135deg,#fff,#f1f2f4);
       border:1px solid var(--line); border-radius:24px; padding:30px;
@@ -379,13 +397,14 @@
   </div>
 </section>
 
-<!-- ⑥ お知らせ（外部ブログリンク） -->
+<!-- ⑥ お知らせ（外部ブログリンク + 自動取得） -->
 <section class="section" id="news">
   <div class="wrap">
     <div class="section-head">
       <div>
         <div class="kicker">INFORMATION</div>
         <h2>最新情報・活動レポート</h2>
+        <p class="sub">最終更新：<!-- updated:start -->—<!-- updated:end --></p>
       </div>
     </div>
     <!-- 外部ブログ（note）への導線 -->
@@ -396,6 +415,9 @@
       </div>
       <span>ブログを開く ↗</span>
     </a>
+    <!-- posts:start -->
+    <p class="empty">まだ記事がありません。</p>
+    <!-- posts:end -->
   </div>
 </section>
 

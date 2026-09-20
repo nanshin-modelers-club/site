@@ -1,0 +1,47 @@
+name: お知らせを更新
+
+on:
+  schedule:
+    # 毎日 06:40 JST（UTC 21:40）。cronはUTC、実行は数分〜十数分ずれます。
+    - cron: '40 21 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'posts.json'
+      - 'README.md'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-posts
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: RSSを取得してHTMLに反映
+        env:
+          FEED_URL: ${{ vars.FEED_URL }}
+          POST_COUNT: ${{ vars.POST_COUNT }}
+        run: node scripts/update-posts.mjs
+
+      - name: 変更をコミット
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html posts.json
+          if git diff --cached --quiet; then
+            echo "変更はありませんでした。"
+          else
+            git commit -m "お知らせを更新"
+            git push
+          fi
