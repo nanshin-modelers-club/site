@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="南信模型クラブ｜長野県南信地域で活動する模型・プラモデルクラブ。見学・飛び入り・初心者歓迎。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>南信模型クラブ｜From Iida.</title>
+  <style>
+    :root {
+      --red:#e31b23;
+      --red-dark:#a90f16;
+      --ink:#101216;
+      --muted:#69707a;
+      --line:#e5e7eb;
+      --paper:#f6f7f8;
+      --white:#fff;
+      --max:1080px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+      line-height:1.7;
+    }
+    a { color:inherit; }
+    .wrap { width:min(calc(100% - 32px),var(--max)); margin:auto; }
+    .hero {
+      position:relative;
+      overflow:hidden;
+      color:#fff;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(227,27,35,.30), transparent 30%),
+        radial-gradient(circle at 15% 80%, rgba(255,255,255,.08), transparent 28%),
+        linear-gradient(135deg,#050608,#15171b 58%,#090a0c);
+      min-height:650px;
+      display:flex;
+      align-items:center;
+    }
+    .hero::after {
+      content:"";
+      position:absolute; inset:0;
+      opacity:.12;
+      background-image:linear-gradient(120deg,transparent 48%,#fff 49%,transparent 50%);
+      background-size:44px 44px;
+      pointer-events:none;
+    }
+    .hero-inner {
+      position:relative; z-index:1;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:34px;
+      align-items:center;
+      padding:54px 0;
+    }
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:.82rem; font-weight:800; letter-spacing:.16em;
+      color:#fff; text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    .eyebrow::before {
+      content:""; width:34px; height:3px; background:var(--red);
+    }
+    h1 { margin:0; font-size:clamp(2.35rem,6.3vw,5.7rem); line-height:.98; letter-spacing:-.06em; white-space:nowrap; }
+    .hero-title-en {
+      margin:15px 0 0; font-size:clamp(1rem,2vw,1.35rem);
+      font-weight:700; color:#cfd3d8; letter-spacing:.08em;
+    }
+    .lead { margin:25px 0 0; font-size:1.08rem; color:#e8eaed; max-width:34em; }
+    .hero-badges { display:flex; flex-wrap:wrap; gap:9px; margin-top:25px; }
+    .badge {
+      border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.07);
+      border-radius:999px; padding:7px 12px; font-size:.86rem; font-weight:700;
+      backdrop-filter:blur(5px);
+    }
+    .logo-frame {
+      justify-self:end; width:min(100%,520px); aspect-ratio:1;
+      display:grid; place-items:center;
+      border-radius:28px;
+      background:#020304;
+      box-shadow:0 28px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+    .logo-frame img { width:100%; height:100%; object-fit:contain; display:block; }
+    .section { padding:78px 0; }
+    .section.alt { background:#fff; }
+    .section-head { display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom:28px; }
+    .kicker {
+      color:var(--red); font-size:.78rem; font-weight:900; letter-spacing:.18em;
+      text-transform:uppercase; margin-bottom:7px;
+    }
+    h2 { margin:0; font-size:clamp(1.8rem,4vw,2.7rem); letter-spacing:-.04em; line-height:1.15; }
+    .sub { color:var(--muted); margin:9px 0 0; }
+    .next {
+      display:grid; grid-template-columns:1.15fr .85fr; gap:24px;
+      background:linear-gradient(135deg,#111318,#1e2229);
+      color:#fff; border-radius:24px; padding:30px;
+      box-shadow:0 18px 45px rgba(15,18,24,.16);
+    }
+    .next-label { color:#ff6970; font-weight:900; letter-spacing:.12em; font-size:.78rem; }
+    .next h3 { margin:8px 0 5px; font-size:clamp(1.55rem,3vw,2.15rem); }
+    .date {
+      display:inline-block; margin:4px 0 16px;
+      font-size:1.15rem; font-weight:800;
+    }
+    .details { display:grid; gap:8px; color:#dce0e5; }
+    .details strong { color:#fff; }
+    .notice {
+      align-self:stretch; border:1px solid rgba(255,255,255,.13);
+      border-radius:18px; padding:22px; background:rgba(255,255,255,.05);
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .notice-title { font-weight:900; margin-bottom:12px; }
+    .notice ul { margin:0 0 16px 0; padding-left:1.2em; color:#e7e9ec; }
+    .notice-warning {
+      background:rgba(227,27,35,0.18);
+      border:1px solid rgba(255,105,112,0.4);
+      padding:12px 14px;
+      border-radius:10px;
+      font-size:0.88rem;
+      line-height:1.5;
+      color:#ffd0d2;
+    }
+    .notice-warning a {
+      color:#ff858a;
+      text-decoration:underline;
+      font-weight:700;
+    }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      min-height:46px; padding:0 18px; border-radius:12px; text-decoration:none;
+      font-weight:900; border:1px solid transparent; transition:.2s ease;
+    }
+    .btn:hover { transform:translateY(-1px); }
+    .btn-red { background:var(--red); color:#fff; }
+    .btn-light { background:#fff; color:#111318; }
+    .btn-outline { border-color:rgba(255,255,255,.25); color:#fff; background:transparent; }
+    .buttons { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card {
+      background:#fff; border:1px solid var(--line); border-radius:18px;
+      padding:24px; box-shadow:0 7px 24px rgba(16,18,22,.045);
+    }
+    .card-icon {
+      width:42px; height:42px; display:grid; place-items:center;
+      border-radius:12px; background:#fff0f1; color:var(--red);
+      font-weight:900; margin-bottom:15px;
+    }
+    .card h3 { margin:0 0 8px; font-size:1.15rem; }
+    .card p { margin:0; color:#565d66; }
+    
+    /* マップ埋め込みコンテナ */
+    .map-container {
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,.05);
+    }
+    .map-info {
+      padding:20px 24px;
+      background:#fff;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+      border-bottom:1px solid var(--line);
+    }
+    .map-info-text strong {
+      display:block;
+      font-size:1.15rem;
+      color:var(--ink);
+    }
+    .map-info-text span {
+      font-size:0.9rem;
+      color:var(--muted);
+    }
+    .map-wrapper {
+      width:100%;
+      height:420px;
+      position:relative;
+      background:#e5e7eb;
+    }
+    .map-wrapper iframe {
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+    .map-warning-box {
+      margin-bottom:18px;
+      background:#fff;
+      border-left:4px solid var(--red);
+      border-radius:8px;
+      padding:14px 18px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.04);
+      font-size:0.95rem;
+      color:#374151;
+    }
+    .map-warning-box a {
+      color:var(--red);
+      font-weight:700;
+      text-decoration:underline;
+    }
+
+    .gallery {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+    }
+    .gallery figure {
+      margin:0; aspect-ratio:4/3; border-radius:16px; overflow:hidden;
+      background:linear-gradient(135deg,#222,#555);
+      position:relative;
+    }
+    .gallery figure::after {
+      content:"作品写真を追加"; position:absolute; inset:0;
+      display:grid; place-items:center; color:#fff; font-weight:800;
+      background:linear-gradient(transparent,rgba(0,0,0,.48));
+    }
+    .gallery img { width:100%; height:100%; object-fit:cover; }
+    .news-link {
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+      background:#111318; color:#fff; padding:24px 26px; border-radius:18px;
+      text-decoration:none;
+    }
+    .news-link span:last-child { color:#ff6870; font-weight:900; }
+    .join {
+      background:linear-gradient(135deg,#fff,#f1f2f4);
+      border:1px solid var(--line); border-radius:24px; padding:30px;
+    }
+    .join-grid { display:grid; grid-template-columns:1fr 1fr; gap:25px; }
+    .price {
+      display:inline-flex; align-items:center; gap:10px; margin:7px 0 13px;
+      font-size:1.45rem; font-weight:950;
+    }
+    .price::before { content:"FREE"; font-size:.7rem; background:var(--red); color:#fff; padding:4px 7px; border-radius:6px; letter-spacing:.06em; }
+    .small { color:var(--muted); font-size:.9rem; }
+    footer {
+      background:#090a0c; color:#b8bdc5; padding:32px 0;
+      font-size:.88rem;
+    }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .footer-brand { color:#fff; font-weight:900; }
+    @media (max-width:800px) {
+      .hero { min-height:auto; }
+      .hero-inner, .next, .join-grid { grid-template-columns:1fr; }
+      .logo-frame { justify-self:center; width:min(82vw,460px); order:-1; }
+      .hero-copy { text-align:center; }
+      .hero-badges, .buttons { justify-content:center; }
+      .grid3, .gallery { grid-template-columns:1fr 1fr; }
+      .section { padding:60px 0; }
+    }
+    @media (max-width:520px) {
+      .wrap { width:min(calc(100% - 22px),var(--max)); }
+      .grid3, .gallery { grid-template-columns:1fr; }
+      .next, .join { padding:22px; }
+      h1 { font-size:clamp(2rem,12vw,3rem); letter-spacing:-.07em; }
+      .map-wrapper { height:320px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Nanshin Modelers Club</div>
+      <h1>南信模型クラブ</h1>
+      <div class="hero-title-en">From Iida.</div>
+      <p class="lead">長野県南信地域で、模型をつくって、見せて、語る。<br>10年以上活動している模型クラブです。</p>
+      <div class="hero-badges">
+        <span class="badge">見学歓迎</span>
+        <span class="badge">飛び入り歓迎</span>
+        <span class="badge">初心者歓迎</span>
+        <span class="badge">手ぶらOK</span>
+      </div>
+    </div>
+    <div class="logo-frame">
+      <img src="nanshinmodelersclublogo.png" alt="南信模型クラブ ロゴ">
+    </div>
+  </div>
+</header>
+
+<!-- ③ クラブについて -->
+<section class="section alt" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">ABOUT US</div>
+        <h2>南信地域で10年以上の模型仲間</h2>
+        <p class="sub">スケールモデル、ガンプラ、キャラクター、ガレージキットまで何でもありの自由な集まりです。</p>
+      </div>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <div class="card-icon">01</div>
+        <h3>ジャンル不問</h3>
+        <p>戦車・飛行機・艦船などのミリタリーから、ガンプラ、美少女フィギュア、カーモデルまで各自好きなものを持ち寄っています。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">02</div>
+        <h3>気軽な定例会</h3>
+        <p>会費なし、手ぶら参加OK。途中参加・途中退出も自由。製作途中のキットを持ち込んで相談したり、雑談を楽しんだりしています。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">03</div>
+        <h3>展示会への参加</h3>
+        <p>地域の文化祭や模型展示会へ合同出展することもあります（出展時のみ実費を参加者で精算します）。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ 活動場所（Googleマップ埋め込み） -->
+<section class="section" id="map">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">LOCATION</div>
+        <h2>活動場所</h2>
+        <p class="sub">主な活動拠点として飯田市の鼎公民館を利用しています。</p>
+      </div>
+    </div>
+
+    <!-- 注意書き -->
+    <div class="map-warning-box">
+      <strong>【ご確認のお願い】</strong> 日時や場所は変更になる場合がございますので、事前に <a href="https://x.com/search?q=%E5%8D%97%E4%BF%A1%E6%A8%A1%E5%9E%8B%E3%82%AF%E3%83%A9%E3%83%96&src=typed_query&f=top" target="_blank" rel="noopener noreferrer">X.com #南信模型クラブ</a> にて確認をお願いします。
+    </div>
+
+    <!-- マップコンテナ -->
+    <div class="map-container">
+      <div class="map-info">
+        <div class="map-info-text">
+          <strong>飯田市 鼎公民館・鼎文化センター</strong>
+          <span>〒395-0801 長野県飯田市鼎下山529-1（駐車場あり）</span>
+        </div>
+        <a href="https://www.google.com/maps/place/%E9%A3%AF%E7%94%B0%E5%B8%82+%E9%BC%8E%E5%85%AC%E6%B0%91%E9%A4%A8%E3%83%BB%E9%BC%8E%E6%96%87%E5%8C%96%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC/@35.5052144,137.8243776,17z/data=!3m1!4b1!4m6!3m5!1s0x601c999eb95d99bd:0x5177b82d010629ee!8m2!3d35.5052144!4d137.8269525!16s%2Fg%2F1vcl3v9w?entry=ttu" target="_blank" rel="noopener noreferrer" class="btn btn-red" style="min-height:38px; padding:0 14px; font-size:0.88rem;">
+          Googleマップで開く ↗
+        </a>
+      </div>
+      <div class="map-wrapper">
+        <iframe 
+          src="https://maps.google.com/maps?q=35.5052144,137.8269525&hl=ja&z=16&output=embed" 
+          loading="lazy" 
+          allowfullscreen="" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="飯田市 鼎公民館・鼎文化センター 地図">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ 作品ギャラリー -->
+<section class="section alt" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">GALLERY</div>
+        <h2>メンバー作品</h2>
+        <p class="sub">例会や展示会で持ち寄られたメンバーの製作例です。</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure></figure>
+      <figure></figure>
+      <figure></figure>
+    </div>
+    <div class="buttons" style="margin-top:28px;">
+      <!-- Googleフォト等の共有リンクを設定 -->
+      <a href="https://photos.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border-color:#ccc; color:#111;">
+        過去のアルバムを見る（Googleフォト） ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ お知らせ（外部ブログリンク） -->
+<section class="section" id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">INFORMATION</div>
+        <h2>最新情報・活動レポート</h2>
+      </div>
+    </div>
+    <!-- 外部ブログ（note）への導線 -->
+    <a href="https://note.com/nanshinmodelers" target="_blank" rel="noopener noreferrer" class="news-link">
+      <div>
+        <div style="font-weight:900; font-size:1.15rem;">最新の展示会レポート・お知らせはこちら</div>
+        <div style="color:#9aa0a6; font-size:0.88rem;">note（nanshinmodelers）にて最新情報を発信しています</div>
+      </div>
+      <span>ブログを開く ↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- ⑦ 参加するには -->
+<section class="section alt" id="join">
+  <div class="wrap">
+    <div class="join">
+      <div class="join-grid">
+        <div>
+          <div class="kicker">JOIN US</div>
+          <h2 style="margin-bottom:12px;">参加・見学について</h2>
+          <div class="price">年会費・月会費 なし</div>
+          <p class="small">
+            南信地域にお住まいの方、模型仲間を作りたい方、初心者の方もお気軽にお越しください。<br>
+            事前連絡なしの飛び入り見学も大歓迎です（※日程確認のため事前の問い合わせまたはXの確認を推奨します）。
+          </p>
+        </div>
+        <div style="display:flex; flex-direction:column; justify-content:center; gap:12px;">
+          <div><strong>お問い合わせ先：</strong></div>
+          <!-- Googleフォームへのお問い合わせリンク -->
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdt5m2NY0QdquQY-GKvYGH6VKmZdWeBUYxXP8HngYQN-kDeSA/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-red" style="width:100%;">
+            お問い合わせフォームを開く ↗
+          </a>
+          <div class="small" style="text-align:center;">
+            または <a href="https://x.com/search?q=%23%E5%8D%97%E4%BF%A1%E6%A8%A1%E5%9E%8B%E3%82%AF%E3%83%A9%E3%83%97" target="_blank" rel="noopener noreferrer" style="color:var(--red); font-weight:700;">#南信模型クラブ</a> で検索
+          </div>
+        </div>
+      </div>
+
+      <!-- Googleフォーム埋め込み -->
+      <div class="map-container" style="margin-top:24px;">
+        <div class="map-info">
+          <div class="map-info-text">
+            <strong>お問い合わせフォーム</strong>
+            <span>下記フォームに直接ご記入いただけます</span>
+          </div>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdt5m2NY0QdquQY-GKvYGH6VKmZdWeBUYxXP8HngYQN-kDeSA/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-red" style="min-height:38px; padding:0 14px; font-size:0.88rem;">
+            新しいタブで開く ↗
+          </a>
+        </div>
+        <div class="map-wrapper" style="height:900px;">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdt5m2NY0QdquQY-GKvYGH6VKmZdWeBUYxXP8HngYQN-kDeSA/viewform?embedded=true"
+            loading="lazy"
+            title="お問い合わせフォーム">読み込んでいます…</iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ フッター -->
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="footer-brand">南信模型クラブ</div>
+      <div style="font-size:0.8rem; margin-top:4px;">Nanshin Modelers Club - From Iida, Nagano</div>
+    </div>
+    <div style="text-align:right;">
+      <div>連絡・告知：<a href="https://x.com/search?q=%23%E5%8D%97%E4%BF%A1%E6%A8%A1%E5%9E%8B%E3%82%AF%E3%83%A9%E3%83%97" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:underline;">X.com (#南信模型クラブ)</a></div>
+      <div style="font-size:0.78rem; margin-top:4px; color:#6b7280;">最終更新：2026年</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
